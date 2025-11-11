@@ -18,7 +18,7 @@ This section uses the following references:
   - [2.1.2] [Creating an info or a facts module](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_general.html#creating-an-info-or-a-facts-module)
   - [2.1.3] [Creating a module](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_general.html#creating-a-module)
 
-### 2.1 Prepare Development Environment to Develop a Module
+### 2.1a Prepare Development Environment to Develop a Module (Deprecated)
 
 The development environment preparation is part of a larger scenario: Developing Ansible modules [2.1].
 
@@ -41,6 +41,26 @@ To prepare the development environment, refer to [2.1.1]. The main steps are as 
 - 6). Install development requirements: `$ pip install -r requirements.txt`
   - Make sure to upgrade `pip`: `pip install --upgrade pip` because Ubuntu 18.04 provides `pip 9.0.1` which is too old.
   - May need to install `setuptools_rust` using the latest version of `pip`: `pip install setuptools_rust`.
+- 7). Run the environment setup script for each new development shell process: `$ . hacking/env-setup`
+
+After the initial setup above, every time you are ready to start developing Ansible you should be able to just run the following from the root of the Ansible repo: `$ . venv/bin/activate && . hacking/env-setup`.
+
+### 2.1b: Prepare Development Environment to Develop a Module (Python 3 only)
+
+The development environment preparation is part of a larger scenario: Developing Ansible modules [2.1].
+
+To prepare the development environment, refer to [2.1.1]. The main steps are as follows (assuming Ubuntu):
+
+- 0). Prepare:
+  - `sudo apt update`
+  - `sudo apt install man-db`
+- 1). Install prerequisites: `sudo apt install build-essential libssl-dev libffi-dev python3-dev python3-venv python3-pip`
+- 2). Clone the Ansible repository: `$ git clone https://github.com/ansible/ansible.git`
+- 3). Change directory into the repository root dir: `$ cd ansible`
+- 4). Create a virtual environment: `$ python3 -m venv venv`
+- 5). Activate the virtual environment: `$ . venv/bin/activate`
+- 6). Install development requirements: `$ pip3 install -r requirements.txt`
+  - May also need to install `setuptools_rust`: `pip3 install setuptools_rust`.
 - 7). Run the environment setup script for each new development shell process: `$ . hacking/env-setup`
 
 After the initial setup above, every time you are ready to start developing Ansible you should be able to just run the following from the root of the Ansible repo: `$ . venv/bin/activate && . hacking/env-setup`.
