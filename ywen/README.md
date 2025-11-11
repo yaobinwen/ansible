@@ -65,6 +65,16 @@ To prepare the development environment, refer to [2.1.1]. The main steps are as 
 
 After the initial setup above, every time you are ready to start developing Ansible you should be able to just run the following from the root of the Ansible repo: `$ . venv/bin/activate && . hacking/env-setup`.
 
+### 2.1c: Prepare Development Environment to Develop a Module (using Docker)
+
+- 1). Clone the Ansible repository: `$ git clone https://github.com/ansible/ansible.git`
+- 2). Change directory into the repository root dir: `$ cd ansible`
+- 3). Run `./ywen/docker-env.sh`. This logs you into the container as `root` at `/ansible`.
+- 4). Inside the Docker container:
+  - Run `source ./ywen/docker-ansible-env-setup.sh`.
+    - `source` is needed because we want to stay in the `venv` environment as well as the environment variables that are set up in the last step `. hacking/env-setup`.
+  - Run `ansible --version` and it should print the version info successfully.
+
 ### 2.2 Decide Module Type
 
 The document [2.1] mentions three types of modules:
